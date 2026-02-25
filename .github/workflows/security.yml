@@ -1,11 +1,15 @@
 name: Security Review
 
 permissions:
-  pull-requests: write  # Needed for leaving PR comments
+  pull-requests: write
   contents: read
 
+# 修改这里：增加 push 触发
 on:
-  pull_request:
+  push:            # <--- 新增：推送到 main 时也运行
+    branches: [ "main" ]
+  pull_request:    # 原有：有 PR 时也运行
+    branches: [ "main" ]
 
 jobs:
   security:
